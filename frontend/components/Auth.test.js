@@ -55,7 +55,7 @@ describe("Auth component", () => {
     // ✨ click the Login button
     await user.click(loginBtn);
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(await screen.findByText("Please wait...")).toBeInTheDocument();
+    expect(await screen.findByText("Please wait...")).toBeVisible();
   });
   test('[3] Submitting form typing [ENTER] shows "Please wait..." message', async () => {
     // ✨ type whatever values in username and password inputs
@@ -64,13 +64,13 @@ describe("Auth component", () => {
     // ✨ hit the [ENTER] key on the keyboard
     await user.keyboard("[ENTER]");
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(await screen.findByText("Please wait...")).toBeInTheDocument();
+    expect(await screen.findByText("Please wait...")).toBeVisible();
   });
   test('[4] Submitting an empty form shows "Invalid Credentials" message', async () => {
     // ✨ submit an empty form
     await user.click(loginBtn);
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(await screen.findByText("Invalid Credentials")).toBeInTheDocument();
+    expect(await screen.findByText("Invalid Credentials")).toBeVisible();
   });
   test('[5] Submitting incorrect credentials shows "Invalid Credentials" message', async () => {
     // ✨ type whatever username and password and submit form
@@ -78,7 +78,7 @@ describe("Auth component", () => {
     await user.type(passInput, "1234");
     await user.click(loginBtn);
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(await screen.findByText("Invalid Credentials")).toBeInTheDocument();
+    expect(await screen.findByText("Invalid Credentials")).toBeVisible();
   });
   for (const usr of registeredUsers) {
     test(`[6.${usr.id}] Logging in ${usr.username} makes the following elements render:
